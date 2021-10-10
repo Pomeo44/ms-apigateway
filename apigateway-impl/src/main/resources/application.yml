@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: apigateway
+  main:
+    allow-bean-definition-overriding: true
+    web-application-type: reactive
+  h2.console.enabled: true
+  datasource:
+    driverClassName: org.h2.Driver
+    url: "jdbc:h2:mem:testdb;\
+          INIT=CREATE SCHEMA IF NOT EXISTS APIGATEWAY\\;SET SCHEMA APIGATEWAY;"
+    username: sa
+    password:
+  liquibase:
+    enabled: true
+    parameters:
+      schema: route
+      text_array_type: ARRAY
+    change-log: classpath:db/changelog-master.xml
+  jpa:
+    hibernate.ddl-auto: none
+    show-sql: false
+  cloud:
+    gateway:
+      routes:
+        - id: route
+          uri: lb://route
+          predicates:
+            - Path=/route/**
+          filters:
+            - StripPrefix=1
+
+logging:
+  level:
+    ROOT: info
+    com.flixbus.apigateway: debug
+    org:
+      springframework: debug
+#        web: info
+#        security: info
+    org.apache.coyote.http11: info
+
+agigateway:
+  jwt:
+    secret: test

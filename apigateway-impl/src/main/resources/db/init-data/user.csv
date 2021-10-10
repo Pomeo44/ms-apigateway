@@ -1,0 +1,3 @@
+id,login,password,user_role_id
+1,admin,$2a$12$QajvelpjlHLnAi5zA8jqh.XK3iqfSI7rs1qioRHySrc6MV7/0t0au,1
+2,user,$2a$12$BUCcI5lfQpv6gxsjakAV3uzU2v.fhSd8TTzlRmS4n59QjLziR7puK,2
