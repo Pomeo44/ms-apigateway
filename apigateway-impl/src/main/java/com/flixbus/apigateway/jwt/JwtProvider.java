@@ -5,6 +5,7 @@
 
 package com.flixbus.apigateway.jwt;
 
+import com.flixbus.apigateway.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -32,10 +34,11 @@ public class JwtProvider {
     @Value("${agigateway.jwt.secret}")
     private String jwtSecret;
 
-    public String generateToken(String login) {
+    public String generateToken(User user) {
         Date date = Date.from(LocalDate.now().plusDays(15).atStartOfDay(ZoneId.systemDefault()).toInstant());
         return Jwts.builder()
-                .setSubject(login)
+                .setSubject(user.getLogin())
+                .claim("authorities", Collections.singletonList(user.getUserRole().getName()))
                 .setExpiration(date)
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();

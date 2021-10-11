@@ -29,7 +29,7 @@ public class AuthController {
     @PostMapping("/auth")
     public String auth(@RequestBody AuthRequest request) {
         User user = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
-        return jwtProvider.generateToken(user.getLogin());
+        return jwtProvider.generateToken(user);
     }
 
     @Data

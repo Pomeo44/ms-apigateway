@@ -53,7 +53,9 @@ public class JwtFilter implements WebFilter {
             String userLogin = jwtProvider.getLoginFromToken(token);
             CustomUserDetails customUserDetails = customUserDetailsService.loadUserByUsername(userLogin);
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
-            return webFilterChain.filter(serverWebExchange).subscriberContext(ReactiveSecurityContextHolder.withAuthentication(authentication));
+            return webFilterChain
+                    .filter(serverWebExchange)
+                    .subscriberContext(ReactiveSecurityContextHolder.withAuthentication(authentication));
         }
 
         return webFilterChain.filter(serverWebExchange);
