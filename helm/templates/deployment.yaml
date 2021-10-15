@@ -20,8 +20,14 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.containerPort }}
+              containerPort: {{ .Values.container.port.http }}
               protocol: TCP
+            - name: debug
+              containerPort: {{ .Values.container.port.debug }}
+              protocol: TCP
+          env:
+            - name: "JAVA_OPTS"
+              value: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
           envFrom:
           - prefix: ""
             configMapRef:

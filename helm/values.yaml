@@ -1,9 +1,14 @@
 replicaCount: 2
 image:
   repository: "pomeo44/ms-apigateway"
-  tag: "1.0"
+  tag: "2"
   pullPolicy: IfNotPresent
-containerPort: 8080
+container:
+  port:
+    http: 8080
+    debug: 5005
 service:
   type: LoadBalancer
-  port: 8080
+  port:
+    http: 8080
+    debug: 5005

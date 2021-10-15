@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: {{ .Chart.Name }}
 data:
-  spring.logging.level.ROOT: "TRACE"
+  logging.level.ROOT: "TRACE"
