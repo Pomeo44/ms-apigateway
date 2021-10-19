@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}
+  name: {{ .Values.application }}
   labels:
-    app: {{ .Chart.Name }}
+    app: {{ .Values.application }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}
+      app: {{ .Values.application }}
   template:
     metadata:
       labels:
-        app: {{ .Chart.Name }}
+        app: {{ .Values.application }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ .Values.application }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
@@ -31,4 +31,4 @@ spec:
           envFrom:
           - prefix: ""
             configMapRef:
-              name: {{ .Chart.Name }}
+              name: {{ .Values.application }}

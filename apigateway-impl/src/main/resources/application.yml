@@ -21,14 +21,13 @@ spring:
     hibernate.ddl-auto: none
     show-sql: false
   cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
     gateway:
-      routes:
-        - id: route
-          uri: lb://route
-          predicates:
-            - Path=/route/**
-          filters:
-            - StripPrefix=1
+      discovery:
+        locator:
+          enabled: true
 
 logging:
   level:

@@ -23,7 +23,9 @@
         <swagger-annotations.version>1.5.14</swagger-annotations.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
         <spring-cloud-starter-gateway.version>2.2.9.RELEASE</spring-cloud-starter-gateway.version>
+        <spring-cloud-starter-openfeign.version>2.2.9.RELEASE</spring-cloud-starter-openfeign.version>
         <spring-cloud-starter-kubernetes.version>1.1.10.RELEASE</spring-cloud-starter-kubernetes.version>
+        <spring-cloud-loadbalancer.version>2.2.9.RELEASE</spring-cloud-loadbalancer.version>
         <jjwt.version>0.9.1</jjwt.version>
     </properties>
     <dependencyManagement>
@@ -54,6 +56,16 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-gateway</artifactId>
                 <version>${spring-cloud-starter-gateway.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${spring-cloud-starter-openfeign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>${spring-cloud-loadbalancer.version}</version>
             </dependency>
 
             <dependency>

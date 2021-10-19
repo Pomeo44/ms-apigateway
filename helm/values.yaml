@@ -1,4 +1,5 @@
-replicaCount: 2
+application: apigateway
+replicaCount: 1
 image:
   repository: "pomeo44/ms-apigateway"
   tag: "2"
