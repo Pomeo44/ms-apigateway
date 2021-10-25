@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: {{ .Values.application }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.container.image.repository }}:{{ .Values.container.image.tag }}"
+          imagePullPolicy: {{ .Values.container.image.pullPolicy }}
           ports:
             - name: http
               containerPort: {{ .Values.container.port.http }}
@@ -28,7 +28,8 @@ spec:
           env:
             - name: "JAVA_OPTS"
               value: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+            {{- toYaml .Values.container.env | nindent 12 }}
           envFrom:
-          - prefix: ""
-            configMapRef:
-              name: {{ .Values.application }}
+            - prefix: ""
+              configMapRef:
+                name: {{ .Values.application }}

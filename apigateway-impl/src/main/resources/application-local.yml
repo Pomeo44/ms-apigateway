@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: "jdbc:h2:mem:testdb;\
+          INIT=CREATE SCHEMA IF NOT EXISTS APIGATEWAY\\;SET SCHEMA APIGATEWAY;"
+    username: sa
+    password:
+  cloud:
+    kubernetes:
+      enabled: false

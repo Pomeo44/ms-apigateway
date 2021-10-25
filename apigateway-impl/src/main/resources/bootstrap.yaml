@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: apigateway
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+        strategy: refresh
+        mode: event
