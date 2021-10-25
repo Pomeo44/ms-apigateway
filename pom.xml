@@ -28,6 +28,15 @@
         <spring-cloud-loadbalancer.version>2.2.9.RELEASE</spring-cloud-loadbalancer.version>
         <jjwt.version>0.9.1</jjwt.version>
         <postgresql.version>42.2.22</postgresql.version>
+        <liquibase-maven-plugin>3.8.9</liquibase-maven-plugin>
+
+        <!-- liquibase plugin properties -->
+        <liquibase.host>localhost</liquibase.host>
+        <liquibase.port>5432</liquibase.port>
+        <liquibase.db>route</liquibase.db>
+        <liquibase.schema>apigateway</liquibase.schema>
+        <liquibase.user>apigateway</liquibase.user>
+        <liquibase.password>apigateway</liquibase.password>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -104,14 +113,6 @@
                     <configuration>
                         <release>${java.version}</release>
                         <forceJavacCompilerUse>true</forceJavacCompilerUse>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.liquibase</groupId>
-                    <artifactId>liquibase-maven-plugin</artifactId>
-                    <version>3.8.0</version>
-                    <configuration>
-                        <propertyFile>liquibase.properties</propertyFile>
                     </configuration>
                 </plugin>
             </plugins>

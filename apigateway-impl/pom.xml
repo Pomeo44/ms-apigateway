@@ -66,6 +66,10 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
@@ -109,6 +113,28 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase-maven-plugin}</version>
+                <configuration>
+                    <outputFileEncoding>UTF-8</outputFileEncoding>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>
+                        jdbc:postgresql://${liquibase.host}:${liquibase.port}/${liquibase.db}?currentSchema=${liquibase.schema}
+                    </url>
+                    <username>${liquibase.user}</username>
+                    <password>${liquibase.password}</password>
+                    <changeLogFile>db/changelog-master.xml</changeLogFile>
+                    <changelogSchemaName>${liquibase.schema}</changelogSchemaName>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
