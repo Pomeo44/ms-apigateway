@@ -14,7 +14,7 @@ node {
             sh 'docker login -u pomeo44 -p $PASSWORD'
         }
         sh 'docker build -t ms-apigateway .'
-        sh 'docker tag ms-ticket pomeo44/ms-apigateway:$BUILD_NUMBER'
+        sh 'docker tag ms-ticket pomeo44/ms-apigateway:$GIT_BRANCH-$BUILD_NUMBER'
         sh 'docker images'
     }
     stage("Docker push"){
