@@ -20,8 +20,8 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="create_user" author="Aleksandr_Antipin">
-        <createTable tableName="user">
+    <changeSet id="create_users" author="Aleksandr_Antipin">
+        <createTable tableName="users">
             <column name="id" type="BIGINT" remarks="ID">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="bus_cost_pk"/>
             </column>
@@ -35,7 +35,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addForeignKeyConstraint baseColumnNames="user_role_id" baseTableName="user"
+        <addForeignKeyConstraint baseColumnNames="user_role_id" baseTableName="users"
                                  constraintName="user_role_user_id_fk"
                                  referencedColumnNames="id"
                                  referencedTableName="user_role"/>
@@ -49,7 +49,7 @@
 
     <changeSet id="insert_data_to_driver_cost" author="Aleksandr_Antipin">
         <loadData
-                tableName="user"
+                tableName="users"
                 file="db/init-data/user.csv"/>
     </changeSet>
 
