@@ -10,8 +10,12 @@ import com.flixbus.apigateway.entity.UserRole;
 import com.flixbus.apigateway.repository.UserRepository;
 import com.flixbus.apigateway.repository.UserRoleRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * UserService.
@@ -25,6 +29,7 @@ public class UserService {
     private UserRepository userRepository;
     private UserRoleRepository userRoleRepository;
     private PasswordEncoder passwordEncoder;
+    private JdbcTemplate jdbcTemplate;
 
     public User saveUser(User user) {
         UserRole userRole = userRoleRepository.findByName("ROLE_USER");
@@ -34,6 +39,8 @@ public class UserService {
     }
 
     public User findByLogin(String login) {
+        List<Map<String, Object>> users = jdbcTemplate.queryForList("select * from user");
+        System.out.println(users);
         return userRepository.findByLogin(login);
     }
 
