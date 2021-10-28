@@ -3,10 +3,7 @@ package com.flixbus.apigateway.entity;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * BusCost.
@@ -16,6 +13,7 @@ import javax.persistence.ManyToOne;
 @Entity
 @Data
 @Accessors(chain = true)
+@Table(name = "users")
 public class User {
 
     @Id
