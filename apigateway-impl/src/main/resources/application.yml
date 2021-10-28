@@ -2,7 +2,6 @@ spring:
   main:
     allow-bean-definition-overriding: true
     web-application-type: reactive
-  h2.console.enabled: true
   datasource:
     driverClassName: org.postgresql.Driver
     url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/route}?currentSchema=apigateway
@@ -11,7 +10,7 @@ spring:
   liquibase:
     enabled: true
     parameters:
-      schema: route
+      schema: apigateway
       text_array_type: ARRAY
     change-log: classpath:db/changelog-master.xml
   jpa:
